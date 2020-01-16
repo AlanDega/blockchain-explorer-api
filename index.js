@@ -1,15 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors')
-
-
 const app = express();
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-const PORT =  4002;
 
 app.get('/',(req,res)=>{
     res.send(
@@ -132,7 +129,9 @@ app.get('/',(req,res)=>{
         )
 });
 
-app.listen(PORT,() => {
-    console.log(`Server on port ${PORT}`);
+const port =  process.env.PORT || 4002;
+
+app.listen(port,() => {
+    console.log(`Server on port ${port}`);
 });
 
